@@ -120,6 +120,8 @@ if ($game.data("flippedCards").length === 2) {
 
     $game.data("flippedCards")[1].css("border-radius", "8px");
     $game.data("flippedCards")[0].css("border-radius", "8px");
+
+    $game.data("flippedCards").length=0;
   }
   else {
 
@@ -135,13 +137,14 @@ if ($game.data("flippedCards").length === 2) {
       $game.data("flippedCards")[1].data("flipped", false);
       $game.data("flippedCards")[0].data("flipped", false);
 
+      $game.data("flippedCards").length=0;
 
 
     }, 1000);
 
 }
 
-    $game.data("flippedCards").length=0;
+
 
   }
 
