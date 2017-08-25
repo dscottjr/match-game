@@ -73,7 +73,7 @@ $game.data("flippedCards", flippedCardsArray);
 
 for (var i=0; i < cardValues.length; i++) {
 
-var $card = $('<div class="card col-xs-3"</div>');
+var $card = $('<div class="card col-xs-3"></div>');
 
 $card.data("value", cardValues[i]);
 $card.data("flipped", false);
@@ -84,7 +84,7 @@ $game.append($card);
 }
 
 $('.card').on('click', function() {
- MatchGame.flipCard(this, $('#game'));
+ MatchGame.flipCard($(this), $('#game'));
 });
 
 };
@@ -96,7 +96,7 @@ $('.card').on('click', function() {
 
 MatchGame.flipCard = function($card, $game) {
 
-if ($card.data('flipped') === true) {
+if ($card.data("flipped") === true) {
   return;
 }
 
@@ -104,23 +104,20 @@ $card.css('background-color', $card.data("color"));
 $card.text($card.data("value"));
 $card.data("flipped", true);
 
-$game.data("flippedCardsArray").push($card.text("value"));
+$game.data("flippedCards").push($card.data("value"));
 
-if (flippedCardsArray.length === 2) {
+if ($game.data("flippedCards").length === 2) {
 
-  if ($game.data("flippedCardsArray"[1]) === $game.data("flippedCardsArray"[0]) ) {
-    $card.css("color", rgb(204,204,204));
-    $card.css("background-color", rgb(153,153,153));
+
+  if ($game.data("flippedCards")[1] === $game.data("flippedCards")[0] ) {
+    $card.css("color","rgb(204,204,204)");
+    $card.css("background-color", "rgb(153,153,153)");
     $card.css("border","4px,solid,#ffffff");
     $card.css("border-radius", "8px");
   }
   else {
-    $card.css("background-color",rgb(32,64,86));
+    $card.css("background-color","rgb(32,64,86)");
     $card.data("flipped", false);
-
-    var flippedCardsArray = [];
-
-    $game.data("flippedCards", flippedCardsArray);
     }
 
   }
