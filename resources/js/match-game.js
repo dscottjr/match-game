@@ -104,21 +104,44 @@ $card.css('background-color', $card.data("color"));
 $card.text($card.data("value"));
 $card.data("flipped", true);
 
-$game.data("flippedCards").push($card.data("value"));
+$game.data("flippedCards").push($card);
 
 if ($game.data("flippedCards").length === 2) {
 
+  if ($game.data("flippedCards")[1].data("value") === $game.data("flippedCards")[0].data("value") ) {
+    $game.data("flippedCards")[1].css("color","rgb(204,204,204)");
+    $game.data("flippedCards")[0].css("color","rgb(204,204,204)");
 
-  if ($game.data("flippedCards")[1] === $game.data("flippedCards")[0] ) {
-    $card.css("color","rgb(204,204,204)");
-    $card.css("background-color", "rgb(153,153,153)");
-    $card.css("border","4px,solid,#ffffff");
-    $card.css("border-radius", "8px");
+    $game.data("flippedCards")[1].css("background-color", "rgb(153,153,153)");
+    $game.data("flippedCards")[0].css("background-color", "rgb(153,153,153)");
+
+    $game.data("flippedCards")[1].css("border","4px,solid,#ffffff");
+    $game.data("flippedCards")[0].css("border","4px,solid,#ffffff");
+
+    $game.data("flippedCards")[1].css("border-radius", "8px");
+    $game.data("flippedCards")[0].css("border-radius", "8px");
   }
   else {
-    $card.css("background-color","rgb(32,64,86)");
-    $card.data("flipped", false);
-    }
+
+    setTimeout(function() {
+
+
+      $game.data("flippedCards")[1].css("background-color","rgb(32,64,86)");
+      $game.data("flippedCards")[0].css("background-color","rgb(32,64,86)");
+
+      $game.data("flippedCards")[1].text("");
+      $game.data("flippedCards")[0].text("");
+
+      $game.data("flippedCards")[1].data("flipped", false);
+      $game.data("flippedCards")[0].data("flipped", false);
+
+
+
+    }, 1000);
+
+}
+
+    $game.data("flippedCards").length=0;
 
   }
 
