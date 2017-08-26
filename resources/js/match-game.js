@@ -140,7 +140,7 @@ if ($game.data("flippedCards").length === 2) {
       $game.data("flippedCards").length=0;
 
 
-    }, 1000);
+    }, 500);
 
 }
 
